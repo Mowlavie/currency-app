@@ -1,0 +1,16 @@
+<h1>Currency Converter</h1>
+
+<div id="conversion_form">
+  <%= render 'conversion_form', conversion: @conversion %>
+</div>
+
+<div id="conversion_result">
+  <!-- Results will appear here -->
+</div>
+
+<div class="conversions-list">
+  <h2>Recent Conversions</h2>
+  <div id="conversions_list">
+    <%= render 'conversions_list', conversions: @conversions %>
+  </div>
+</div>

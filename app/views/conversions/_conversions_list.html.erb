@@ -1,0 +1,21 @@
+<% if conversions.any? %>
+  <% conversions.each do |conversion| %>
+    <div class="conversion-item">
+      <div style="display: flex; justify-content: space-between; align-items: start;">
+        <div>
+          <strong><%= number_with_precision(conversion.amount, precision: 2) %> <%= conversion.base_currency %></strong>
+          →
+          <strong><%= number_with_precision(conversion.converted_amount, precision: 2) %> <%= conversion.target_currency %></strong>
+        </div>
+        <div style="text-align: right; font-size: 14px; color: #666;">
+          <%= time_ago_in_words(conversion.created_at) %> ago
+        </div>
+      </div>
+      <div class="rate-info">
+        Rate: 1 <%= conversion.base_currency %> = <%= number_with_precision(conversion.exchange_rate.rate, precision: 6) %> <%= conversion.target_currency %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p style="color: #666; font-style: italic;">No conversions yet. Try converting a currency above!</p>
+<% end %>

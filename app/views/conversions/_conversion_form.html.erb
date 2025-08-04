@@ -1,0 +1,44 @@
+<%= form_with model: conversion, local: false do |form| %>
+    <div class="flex-row">
+      <div class="form-group">
+        <%= form.label :amount %>
+        <%= form.number_field :amount, step: 0.01, min: 0.01, placeholder: "100.00", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= form.label :base_currency, "From Currency" %>
+        <%= form.select :base_currency, 
+            options_for_select([
+              ['US Dollar (USD)', 'USD'],
+              ['Euro (EUR)', 'EUR'], 
+              ['British Pound (GBP)', 'GBP'],
+              ['Japanese Yen (JPY)', 'JPY'],
+              ['Canadian Dollar (CAD)', 'CAD'],
+              ['Australian Dollar (AUD)', 'AUD'],
+              ['Swiss Franc (CHF)', 'CHF'],
+              ['Chinese Yuan (CNY)', 'CNY']
+            ], 'USD'), 
+            {}, { required: true } %>
+      </div>
+      
+      <div class="form-group">
+        <%= form.label :target_currency, "To Currency" %>
+        <%= form.select :target_currency, 
+            options_for_select([
+              ['US Dollar (USD)', 'USD'],
+              ['Euro (EUR)', 'EUR'], 
+              ['British Pound (GBP)', 'GBP'],
+              ['Japanese Yen (JPY)', 'JPY'],
+              ['Canadian Dollar (CAD)', 'CAD'],
+              ['Australian Dollar (AUD)', 'AUD'],
+              ['Swiss Franc (CHF)', 'CHF'],
+              ['Chinese Yuan (CNY)', 'CNY']
+            ], 'EUR'), 
+            {}, { required: true } %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= form.submit "Convert Currency", class: "btn btn-primary" %>
+    </div>
+  <% end %>

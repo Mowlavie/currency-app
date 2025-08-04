@@ -1,0 +1,11 @@
+<div class="result">
+  <h3>Conversion Result</h3>
+  <p><strong><%= number_with_precision(conversion.amount, precision: 2) %> <%= conversion.base_currency %></strong> = 
+     <strong><%= number_with_precision(conversion.converted_amount, precision: 2) %> <%= conversion.target_currency %></strong></p>
+  
+  <div class="rate-info">
+    <p>Exchange Rate: 1 <%= conversion.base_currency %> = <%= number_with_precision(conversion.exchange_rate.rate, precision: 6) %> <%= conversion.target_currency %></p>
+    <p>Rate last updated: <%= time_ago_in_words(conversion.exchange_rate.fetched_at) %> ago</p>
+    <p>Conversion performed: <%= conversion.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+  </div>
+</div>
